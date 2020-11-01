@@ -168,7 +168,6 @@ PriorityQueue Initialize( int MaxElements )
    }
    ```
    
-   
    $$
    T(N)=O(\log N)
    $$
