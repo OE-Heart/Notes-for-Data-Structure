@@ -143,7 +143,7 @@ PriorityQueue Initialize( int MaxElements )
 2. DeleteMin (必考)
 
    ```c
-  ElementType DeleteMin( PriorityQueue H ) 
+   ElementType DeleteMin( PriorityQueue H ) 
    { 
        int i, Child; 
        ElementType MinElement, LastElement;
