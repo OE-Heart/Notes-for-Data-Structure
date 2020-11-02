@@ -120,6 +120,22 @@ Algorithm using union-find operations:
 
 - **Time complexity** of $N$ Union and $M$ Find operations is now $O(N+M\log_2N)$.
 
+```c
+void SetUnion(DisjSet S, SetType Root1, SetType Root2)
+{
+    if (S[Root1] <= S[Root2])
+    {
+        S[Root1] += S[Root2];
+        S[Root2] = Root1;
+    }
+    else
+    {
+        S[Root2] += S[Root1];
+        S[Root1] = Root2;
+    }
+}
+```
+
 #### Union-by-Height
 
 - Always change the shallow tree
