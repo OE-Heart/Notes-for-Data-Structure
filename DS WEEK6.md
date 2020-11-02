@@ -142,6 +142,32 @@ PriorityQueue Initialize( int MaxElements )
 
 2. DeleteMin
 
+   ```c
+ElementType DeleteMin( PriorityQueue H ) 
+   { 
+    int i, Child; 
+       ElementType MinElement, LastElement; 
+       if ( IsEmpty( H ) ) 
+       { 
+            Error( "Priority queue is empty" ); 
+            return H->Elements[ 0 ];   
+       } 
+       MinElement = H->Elements[ 1 ];  /* save the min element */
+       LastElement = H->Elements[ H->Size-- ];  /* take last and reset size */
+       for ( i = 1; i * 2 <= H->Size; i = Child )  /* Find smaller child */ 
+       {  
+            Child = i * 2; 
+            if (Child != H->Size && H->Elements[Child+1] < H->Elements[Child]) 
+   	     	Child++;     
+            if ( LastElement > H->Elements[ Child ] )   /* Percolate one level */ 
+   	     	H->Elements[ i ] = H->Elements[ Child ]; 
+            else     
+                break;   /* find the proper position */
+       } 
+       H->Elements[ i ] = LastElement; 
+       return MinElement; 
+   }
+   ```
 $$
    T(N)=O(\log N)
 $$
