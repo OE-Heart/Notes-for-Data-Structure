@@ -4,20 +4,20 @@
 
 ### 5.1 Equivalence Relations
 
-#### [Definition] 
+#### [Definition] A *relation R* is defined on a set *S* if for every pair of elements *(a, b)*, *a, b $\in$ S*, *a R b* is either true or false.  If *a R b* is true, then we say that *a* is related to *b*.
 
-#### [Definition]
+#### [Definition] A relation, ~, over a set, *S*, is said to be an *equivalence relation* over *S* if it is symmetric, reflexive, and transitive over *S*.
 
-#### [Definition]
+#### [Definition] Two members *x* and *y* of a set *S* are said to be in the same *equivalence class* if *x ~ y*.
 
 ---
 
 ### 5.2 The Dynamic Equivalence Problem
 
-- Given an equivalence relation ~, decide for any a and b if a ~ b
+- Given an equivalence relation ~, decide for any *a* and *b* if *a ~ b*
 
   ```pseudocode
-  Algorithm:(Union / Find)
+  Algorithm: (Union/Find)
   {
   	/* step 1: read the relations in */
       Initialize N disjoint sets;
@@ -35,17 +35,18 @@
   }
   ```
 
-- **Elements**
-- **Sets**
+- **Elements** of the sets : $1,2,3,\cdots,N$
+- **Sets** : $S_1,S_2,\cdots\,and\,S_i\bigcap S_j=\emptyset\,(if\,i\neq j)$
 - **Operations** :
-  - Union( i, j )
-  - Find( i )\
+  
+  - Union( $i, j$ ) = Replace $S_i$ and $S_j$ by $S=S_i\bigcup S_j$
+  - Find( $i$ ) = Find the set $S_k$ which contains the element $i$
 
 ---
 
 ### 5.3 Basic Data Structure
 
-#### Union( i, j )
+#### Union( $i, j$ )
 
 - **Implementation 1** :
 
@@ -55,7 +56,7 @@
 
   初始化全为0
 
-#### Find( i )
+#### Find( $i$ )
 
 - **Implementation 1** :
 - **Implementation 2** :
@@ -102,7 +103,6 @@
   A(i,j)=
   $$
   
-
 - $\alpha(M,N)=$
 
 
