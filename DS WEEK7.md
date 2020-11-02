@@ -48,20 +48,61 @@
 
 #### Union( $i, j$ )
 
+- Make $S_i$ a subtree of $S_j$, or vice versa, that is to set the parent pointer of one of the roots to the other root.
+
 - **Implementation 1** :
+
+  <img src="picture/7-1.png" alt="7-1" style="zoom:80%;" />
 
 - **Implementation 2** :
 
+  - The elements are numbered from 1 to N, hence they can be used as indices of an array.
+- S[ element ] = the element’s parent
+  - Note : S[ root ] = 0 and set name = root index
+  - 数组初始化全部为0
   
-
-  初始化全为0
+  ```c
+  void SetUnion(DisjSet S, SetType Rt1, SetType Rt2)
+  {
+  	S[Rt2] = Rt1;
+  }
+  ```
 
 #### Find( $i$ )
 
 - **Implementation 1** :
+
+  ![7-2](picture/7-2.png)
+
 - **Implementation 2** :
 
+  ```c
+  SetType Find(ElementType X, DisjSet S)
+  {
+  	for ( ; S[X]>0; X=S[X]);
+  	return X;
+  }
+  ```
+
 #### Analysis
+
+- Union and find are always paired. Thus we consider the performance of a sequence of **union-find operations**.
+
+<img src="picture/7-3.png" alt="7-3" style="zoom:80%;" />
+
+```pseudocode
+Algorithm using union-find operations:
+{  
+	Initialize Si = { i }  for  i = 1, ..., 12 ;
+	for ( k = 1; k <= 9; k++ )  /* for each pair i R j */
+	{
+		if ( Find( i ) != Find( j ) )
+			SetUnion( Find( i ), Find( j ) );
+	}
+}
+```
+
+- Worst case : $T(N)=\Theta(N^2)$
 
 ---
 
@@ -70,51 +111,99 @@
 #### Union-by-Size
 
 - Always change the smaller tree
-- S[Root]
-- **[Lemma]** 
+
+- S[Root] = -size, initialized to be -1
+
+- **[Lemma]** Let T be a tree created by union-by-size with N nodes, then $height(T)\leq\lfloor\log_2N\rfloor+1$.
+
+  Proved by induction. Each element can have its set name changed at most $\log_2N$ times.
+
 - **Time complexity** of $N$ Union and $M$ Find operations is now $O(N+M\log_2N)$.
 
 #### Union-by-Height
 
 - Always change the shallow tree
 
-  ```
-  
-  ```
+```c
+void SetUnion(DisjSet S, SetType Root1, SetType Root2)
+{
+	if ( S[Root2] < S[Root1])  /*Root2 is deeper set*/
+		S[Root1] = Root2;      /*Make Root2 new root*/
+	else
+	{
+		if (S[Root1] == S[Root2])  /*Same height*/
+			S[Root1]--;
+		S[Root2] = Root1;
+	}
+}
+```
 
 ---
 
 ### 5.5 Path Compression
 
+```c
+SetType Find( ElementType X, DisjSet S )
+{
+    if ( S[ X ] <= 0 )    
+    	return X;
+    else 
+    	return S[ X ] = Find( S[ X ], S );
+}
 ```
 
+```c
+SetType Find ( ElementType X, DisjSet S )
+{   
+	ElementType root, trail, lead;
+    for ( root = X; S[ root ] > 0; root = S[ root ] );  /* find the root */
+    for ( trail = X; trail != root; trail = lead )
+    {
+    	lead = S[ trail ];   
+    	S[ trail ] = root;   
+    }  /* collapsing */
+    return  root;
+}
 ```
 
-- Note : 
+- Note : Not compatible with union-by-height since it changes the heights.  Just take “height” as an estimated **rank**.
 
 ---
 
 ### 5.6 Worst Case for Union-by-Rank and Path Compression
 
-#### [Lemma] 
+#### [Lemma] Let $T(M,N)$ be the maximum time required to process an intermixed sequence of $M\geq N$ finds and $N-1$ unions, then $k_1M\alpha(M,N)\leq T(M,N)\leq k_2M\alpha(M,N)$ for some positive constants $k_1$ and $k_2$.
 
 - Ackermann’s Function
   $$
-  A(i,j)=
+  A(i,j)=\left\{
+  \begin{array}{rcl}
+  2^j && {i=1,j\geq1}\\
+  A(i-1,2) && {i\geq2,j=1}\\
+  A(i-1,A(i,j-1)) && {i\geq2,j\geq2}\\
+  \end{array} \right.
   $$
   
-- $\alpha(M,N)=$
+  $$
+  A(2,4)=2^{2^{2^{2^2}}}=2^{65536}
+  $$
+  
+- $\alpha(M,N)=min\{i\geq1|A(i,\lfloor M/N\rfloor)>\log N\}\leq O(\log^*N)\leq4$
+
+  $\log^*N$ (inverse Ackermann function) = number of times the logarithm is applied to $N$ until the result $\leq1$.
 
 
 
-一共五种算法，注意看清题设
 
-No smart union
 
-Union by size
+p.s. 一共有五种算法，注意看清题设
 
-Union by height
+- No smart union
 
-Union by size + Union by rank
+- Union-by-size
 
-Union by height + Union by rank
+- Union-by-height
+
+- Union-by-size + Path Compression
+
+- Union-by-height + Path Compression
