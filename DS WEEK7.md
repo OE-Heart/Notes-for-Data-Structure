@@ -142,6 +142,8 @@ void SetUnion(DisjSet S, SetType Root1, SetType Root2)
 
 ### 5.5 Path Compression
 
+- 从X到Root的路径上的每一个结点都使它的父结点变成Root
+
 ```c
 SetType Find( ElementType X, DisjSet S )
 {
@@ -153,7 +155,7 @@ SetType Find( ElementType X, DisjSet S )
 ```
 
 ```c
-SetType Find ( ElementType X, DisjSet S )
+SetType Find( ElementType X, DisjSet S )
 {   
 	ElementType root, trail, lead;
     for ( root = X; S[ root ] > 0; root = S[ root ] );  /* find the root */
@@ -162,7 +164,7 @@ SetType Find ( ElementType X, DisjSet S )
     	lead = S[ trail ];   
     	S[ trail ] = root;   
     }  /* collapsing */
-    return  root;
+    return root;
 }
 ```
 
