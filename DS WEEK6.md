@@ -124,7 +124,7 @@ PriorityQueue Initialize( int MaxElements )
    /* H->Element[ 0 ] is a sentinel that is no larger than the minimum element in the heap.*/ 
    void  Insert( ElementType X,  PriorityQueue H ) 
    { 
-   	int  i; 
+   	int i; 
        if ( IsFull( H )) 
        { 
    		Error( "Priority queue is full" ); 
@@ -140,10 +140,10 @@ PriorityQueue Initialize( int MaxElements )
    T(N)=O(\log N)
    $$
 
-2. DeleteMin (必考)
+2. DeleteMin
 
    ```c
-  ElementType DeleteMin( PriorityQueue H ) 
+    ElementType DeleteMin( PriorityQueue H ) 
    { 
        int i, Child; 
        ElementType MinElement, LastElement;
