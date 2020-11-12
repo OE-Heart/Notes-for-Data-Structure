@@ -88,11 +88,10 @@ $$
   e=(\sum_{i=0}^{n-1}d_i)/2\quad where\quad d_i=degree(v_i)
   $$
   
-- 
 
 ### 6.2 Representation of Graphs
 
-#### Adjacent Matrix
+#### Adjacency Matrix
 
 <img src="picture/8-4.png" alt="8-4" style="zoom:60%;" />
 
@@ -113,21 +112,82 @@ $$
 
 #### Adjacency Multilists
 
+<img src="picture/8-6.png" alt="8-6" style="zoom:80%;" />
 
+- Sometimes we need to mark the edge after examine it, and then find the next edge.
 
 #### Weighted Edges
 
-
+- adj_mat [ i ] [ j ] = weight
+- adjacency lists / multilists :  add a weight field to the node
 
 ### 6.3 Topological Sort
 
 #### AOV Network
 
-
+- digraph $G$ in which $V( G )$ represents activities and $E( G )$ represents precedence relations 
+- $i$  is a **predecessor** of $j$ = there is a path from $i$  to $j$
+- $i$  is an **immediate predecessor** of  $j$ = $< i,  j > \in E( G )$. Then $j$ is called a **successor**(**immediate successor**) of $i$
 
 #### Partial order
 
+- a precedence relation which is both **transitive** and **irreflexive** 
 
+- Note : If the precedence relation is reflexive, then there must be an $i$ such that $i$ is a predecessor of $i$.  That is, $i$ must be done before $i$ is started. Therefore if a project is **feasible**, it must be **irreflexive**.
 
-#### [Definition] A *topological order* is a linear ordering  
+#### [Definition] A *topological order* is a linear ordering  of the vertices of a graph such that, for any two vertices, $i$, $j$, if $i$ is a predecessor of $j$ in the network then $i$ precedes $j$ in the linear ordering.
 
+- Note : The topological orders may **not be unique** for a  network.
+
+```c
+/*Test an AOV for feasibility, and generate a topological order if possible.*/
+void Topsort( Graph G )
+{   
+	int Counter;
+    Vertex V, W;
+    for ( Counter = 0; Counter < NumVertex; Counter ++ ) 
+    {
+		V = FindNewVertexOfDegreeZero( );
+		if ( V == NotAVertex ) 
+        {
+	    	Error ( “Graph has a cycle” );   
+            break;  
+        }
+		TopNum[ V ] = Counter; /* or output V */
+		for ( each W adjacent to V )
+	    	Indegree[ W ] – – ;
+    }
+}
+```
+
+$$
+T=O(|V|^2)
+$$
+
+```c
+/*Improvment:Keep all the unassigned vertices of degree 0 in a special box (queue or stack).*/
+void Topsort( Graph G )
+{   
+	Queue Q;
+    int Counter = 0;
+    Vertex V, W;
+    Q = CreateQueue( NumVertex );  
+    MakeEmpty( Q );
+    for ( each vertex V )
+		if ( Indegree[ V ] == 0 ) Enqueue( V, Q );
+    while ( !IsEmpty( Q ) ) 
+    {
+		V = Dequeue( Q );
+		TopNum[ V ] = ++ Counter; /* assign next */
+		for ( each W adjacent to V )
+	    	if ( – – Indegree[ W ] == 0 ) Enqueue( W, Q );
+    }  /* end-while */
+    if ( Counter != NumVertex )
+	Error( “Graph has a cycle” );
+    DisposeQueue( Q ); /* free memory */
+}
+```
+
+$$
+T=O(|V|+|E|)
+$$
