@@ -246,21 +246,124 @@ When $T(N)=O(f(N))$, check if $\lim\limits_{N\rightarrow\infty}\frac{T(N)}{f(N)}
 #### Linked Lists
 
 - Location of nodes may change on differrent runs.
+
 - Insertion 先连后断
+
 - Deletion 先连后释放
 
 - 频繁malloc和free系统开销较大
+
 - Finding take $O(N)$ times.
+
+  ```c
+  /*Return true if L is empty*/
+  int IsEmpty(List L)
+  {
+  	return L->Next == NULL;
+  }
+  ```
+
+  ```c
+  /*Return true if P is the last position in list L*/
+  /*Parameter L is unused in this implementation*/
+  int IsLast(Position P, List L)
+  {
+  	return P->Next == NULL;
+  }
+  ```
+
+  ```c
+  /*Return Position of X in L; NULL if not found*/
+  Position Find(Element X, List L)
+  {
+  	Position P;
+  	
+  	P = L->Next;
+  	while (P != NULL && P->Element != X) P = P->Next;
+  	
+  	return P;
+  }
+  ```
+
+  ```c
+  /*Delete first occurence of X from a list*/
+  /*Assume use of a header node*/
+  void Delete(ElementType X, List L)
+  {
+  	Position P, TmpCell;
+  	
+  	P = FindPrevious(X, L);
+  	
+  	if (!IsLast(P, L))
+  	{
+  		TmpCell = P->Next;
+  		P->Next = TmpCell->Next;
+  		free(TmpCell);
+  	}
+  }
+  ```
+
+  ```c
+  /*If X is not found, then Next field of returned*/
+  /*Assumes a header*/
+  Position FindPrevious(ElementType X, List L)
+  {
+  	Position P;
+  	
+  	P = L;
+  	while (P->Next != NULL && P->Next->Element != X) P = P->Next;
+  	
+  	return P;
+  }
+  ```
+
+  ```c
+  /*Insert (after legal position P)*/
+  /*Header implementation assumed*/
+  /*Parameter L is unused in this implementation*/
+  void Insert(ElementType X, List L, Position P)
+  {
+  	Position TmpCell;
+  	
+  	TmpCell = malloc(sizeof(struct Node));
+  	if (TmpCell == NULL) FatalError("Out of space!")
+  	
+  	TmpCell->Element = X;
+  	TmpeCell->Next = P->Next;
+  	P->Next = TmpCell;
+  }
+  ```
+
+  ```c
+  void DeleteList(List L)
+  {
+  	Position P, Tmp;
+  	
+  	P = L->Next;
+  	L->Next = NULL;
+  	while (P != NULL)
+  	{
+  		Tmp = P->Next;
+  		free(P);
+  		P = Tmp;
+  	}
+  }
+  ```
 
 #### Doubly Linked Circular Lists
 
 - Finding take $O(\frac N 2)$ times.
+
+  <img src="picture/2-1.png" alt="2-1" style="zoom:80%;" />
+
+  The correct answer is D.
 
 #### Two Applications
 
 1. The Polynomial ADT
 
 - Objects : 
+
 - Operations : 
   - Finding degree
   - Addition
@@ -268,6 +371,7 @@ When $T(N)=O(f(N))$, check if $\lim\limits_{N\rightarrow\infty}\frac{T(N)}{f(N)}
   - Multiplication
   
   - Differentiation
+  
 - [Representation 1]
 
   ```c
@@ -277,12 +381,54 @@ When $T(N)=O(f(N))$, check if $\lim\limits_{N\rightarrow\infty}\frac{T(N)}{f(N)}
   }  *Polynomial ; 
   ```
 
+  ```c
+  /*将多项式初始化为零*/
+  void ZeroPolynomial(Polynomial Poly)
+  {
+  	int i;
+  	for(i = O; i <= MaxDegree; i++)
+  		Poly->CoeffArray[ i J = O;
+  	Poly->HighPower = O;
+  }
+  ```
+
+  ```c
+  /*两个多项式相加*/
+  void AddPolynomial(const Polynomial Poly1, const Polynomial Poly2, Polynomial PolySum)
+  {
+      int i;
+  	
+      ZeroPolynomial(PolySum);
+  	PolySum->HighPower = Max(Poly1->HighPower, Poly2->HighPower);
+  	
+      for (i = PolySum->HighPower; i >= O; i--)
+  		PolySum->CoeffArray[ i ] = Poly1->CoeffArray[ i ] + Poly2->CoeffArray[ i ];
+  }
+  ```
+
+  ```c
+  void MultPolynomial(const Polynomial Poly1, const Polynomial Poly2, Polynomial PolyProd)
+  {
+      int i, j;
+  	
+      ZeroPolynomial (PolyProd);
+  	PolyProd->HighPower = Poly1->HighPower + Poly2->HighPower;
+  	
+      if(PolyProd->HighPower > MaxDegree)
+  		Error("Exceeded array size");
+  	else
+  		for(i = O; i <= Poly1->HighPower; i++)
+  			for(j = O; j <= Poly2->HighPower; j++)
+  				PolyProd->CoeffArray[ i + j ] += Poly1->CoeffArray[ i ] * Poly2->CoeffArray[ j ];
+  }
+  ```
+
 - [Representation 2]
 
   ```c
   typedef struct poly_node *poly_ptr;
   struct poly_node{
-    int Coefficient;  /* assume coefficients are integers */
+      int Coefficient;  /* assume coefficients are integers */
       int Exponent;
       poly_ptr Next;
   };
@@ -295,7 +441,7 @@ When $T(N)=O(f(N))$, check if $\lim\limits_{N\rightarrow\infty}\frac{T(N)}{f(N)}
 
 #### Cursor Implementation of Linked Lists(no pointer)
 
-
+<img src="picture/2-2.png" alt="2-2" style="zoom:80%;" />
 
 
 
