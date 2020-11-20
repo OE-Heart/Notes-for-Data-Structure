@@ -54,7 +54,7 @@ for (i=0;i<n;i++){
   >2. each instruction is simple, and takes exactly one time unit
   >3. integer size is fixed and we have infinite memory
 
-* $T_{avg}(N)\, and\, T_{worst}(N)$ --> the average and worst case time complexities as functions of input size $N$
+* $T_{avg}(N)\, and\, T_{worst}(N)$ : the average and worst case time complexities as functions of input size $N$
 
 #### [Example] Matrix addition 
 
@@ -136,9 +136,9 @@ But it takes more time to compute each step.
 
   >1. If $T_1(N)=O(f(N))$ and $T_2=O(g(N))$, then
   >
-  >   (1) $T_1(N)+T_2(N)=max(O(f(N)),O(g(N)))$
+  >    (1) $T_1(N)+T_2(N)=max(O(f(N)),O(g(N)))$
   >
-  >   (2) $T_1(N)*T_2(N)=O(f(N)*g(N))$
+  >    (2) $T_1(N)*T_2(N)=O(f(N)*g(N))$
   >
   >2. 若$T(N)$是一个$k$次多项式，则$T(N)=\Theta(N^k)$
   >

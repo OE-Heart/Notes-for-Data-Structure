@@ -74,7 +74,7 @@ static int MaxSubSum(const int A[ ], int Left, int Right)
     
     MaxLeftBorderSum = 0;
     LeftBorderSum = 0;
-    for (i = 0; i >= Left; i--)
+    for (i = Center; i >= Left; i--)
     {
         LeftBorderSum += A[i];
         if (LeftBorderSum > MaxLeftBorderSum)
@@ -83,7 +83,7 @@ static int MaxSubSum(const int A[ ], int Left, int Right)
     
     MaxRightBorderSum = 0;
     RightBorderSum = 0;
-    for (i = 0; i <= Right; i++)
+    for (i = Center+1; i <= Right; i++)
     {
         RightBorderSum += A[i];
         if (RightBorderSum > MaxRightBorderSum)
@@ -130,10 +130,13 @@ T(N)=O(N)
 $$
 
 - A[ ] is scanned **once** only. 扫描一次，无需存储（处理streaming data）
+- 在任意时刻，算法都能对它已经读入的数据给出子序列问题的正确答案(其他算法不具有这个特性)
 
 ****
 
 ### 1.4 Logrithms in the Running Time
+
+- 如果一个算法用常数时间将问题的大小削减为其一部分(通常是1/2)，那么该算法就是$O(logN)$的
 
 #### [Example] Binary Search
 
@@ -159,6 +162,35 @@ int BinarySearch ( const ElementType A[ ], ElementType X, int N )
 $$
 T_{worst}(N)=O(\log N)
 $$
+
+#### [Example] Euclid’s Algorithm
+
+```c
+int Gcd(int M, int N)
+{
+	int Rem;
+	
+	while (N > 0)
+	{
+		Rem = M % N;
+		M = N;
+		N = Rem;
+	}
+	return M;
+}
+```
+
+#### [Example] Efficient exponentiation
+
+```c
+long int Pow(long int X, int N)
+{
+	if (N == 0) return 1;
+	if (N == 1) return X;
+	if (IsEven(N)) return Pow(X*X, N/2);/*return Pow(X, N/2)*Pow(X, N/2) affects the efficiency*/
+	else return Pow(X*X, N/2)*X; /*return Pow(X, N-1)*X is the same*/
+}
+```
 
 ****
 

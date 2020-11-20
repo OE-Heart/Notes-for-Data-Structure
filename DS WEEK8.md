@@ -155,7 +155,7 @@ void Topsort( Graph G )
         }
 		TopNum[ V ] = Counter; /* or output V */
 		for ( each W adjacent to V )
-	    	Indegree[ W ] – – ;
+	    	Indegree[ W ]––;
     }
 }
 ```
@@ -178,9 +178,9 @@ void Topsort( Graph G )
     while ( !IsEmpty( Q ) ) 
     {
 		V = Dequeue( Q );
-		TopNum[ V ] = ++ Counter; /* assign next */
+		TopNum[ V ] = ++Counter; /* assign next */
 		for ( each W adjacent to V )
-	    	if ( – – Indegree[ W ] == 0 ) Enqueue( W, Q );
+	    	if (––Indegree[ W ] == 0 ) Enqueue( W, Q );
     }  /* end-while */
     if ( Counter != NumVertex )
 	Error( “Graph has a cycle” );
