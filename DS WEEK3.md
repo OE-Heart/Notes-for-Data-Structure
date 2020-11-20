@@ -21,6 +21,75 @@
 
 - The calls to malloc and free are expensive. Simply keep another stack as a recycle bin.
 
+  ```c
+  int IsEmpty(Stack S)
+  {
+  	return S->Next == NULL;
+  }
+  ```
+
+  ```c
+  Stack CreateStack(void)
+  {
+  	Stack S;
+  	S = malloc(sizeof(struct Node));
+  	if (S == NULL)
+  		Fatal Error("Out of space!");
+  	S->Next == NULL;
+  	MakeEmpty(S);
+  	return S;
+  }
+  
+  void MakeEmpty(Stack S)
+  {
+  	if (S == NULL)
+  		Error("Must use CreateStack first");
+  	else
+  		while(!IsEmpty(S)) Pop(S);
+  }
+  ```
+
+  ```c
+  void Push(ElementType X, Stack S)
+  {
+  	PtrToNode TmpCell;
+  	TmpCell = malloc(sizeof(struct Node));
+  	if (TmpCell == NULL)
+  		Fatal Error("Out of space!") ;
+  	else
+  	{
+  		TmpCell->Element = X;
+  		TmpCe11->Next = S->Next;
+  		S->Next = TmpCell;
+  	}
+  }
+  ```
+
+  ```c
+  ElementType Top(Stack S)
+  {
+  	if(!IsEmpty(S))
+  		return S->Next->Element;
+  	Error("Empty stack") ;
+  	return O; /* Return value used to avoid warning*/
+  }
+  ```
+
+  ```c
+  void Pop(Stack s)
+  {
+  	PtrToNode FirstCell;
+  	if(IsEmpty(S))
+  		Error("Empty stack") ;
+  	else
+  	{
+  		FirstCe11 = S->Next;
+  		S->Next = S->Next->Next;
+  		free(FirstCe11);
+  	}
+  }
+  ```
+
 #### Array Implementation of Stacks
 
 ```c
@@ -33,7 +102,92 @@ struct StackRecord {
 ```
 
 - The stack model must be well **encapsulated(封装)**.  That is, no part of your code, except for the stack routines, can attempt to access the Array or TopOfStack variable.
+
 - Error check must be done before Push or Pop (Top).
+
+  ```c
+  Stack CreateStack(int Max Elements)
+  {
+  	Stack S;
+  	if(MaxEl ements < MinStackSize)
+  	Error("Stack size is too small") ;
+  	S = malloc(sizeof(struct StackRecord));
+  	if (S == NULL)
+  		Fatal Error("Out of space!!!") ;
+  
+  	S->Array = malloc(sizeof(ElementType) * MaxElements) ;
+  	if(S->Array = NULL)
+  		Fatal Error("Out of space!!!");
+  	S->Capacity = Max Elements;
+  	MakeEmpty(S) ;
+  	return S;
+  }
+  ```
+
+  ```c
+  void DisposeStack(Stack S)
+  {
+  	if(S != NULL)
+  	{
+  		free(S->Array);
+  		free(S);
+  	}
+  }
+  ```
+
+  ```c
+  int IsEmpty(Stack S)
+  {
+  	return S->TopOfStack == EmptyTOS;
+  }
+  ```
+
+  ```c
+  void MakeEmpty(Stack S)
+  {
+  	S->TopOfStack = EmptyTOS;
+  }
+  ```
+
+  ```c
+  void Push(ElementType X, Stack S)
+  {
+  	if (IsFull(S))
+  		Error("Full stack");
+  	else
+  		S->Array[ ++S->TopOfStack ] = X;
+  }
+  ```
+
+  ```c
+  ElementType Top(Stack S)
+  {
+  	if(! IsEmpty(S))
+  		return S->Array[ S->TopOfStack ];
+  	Error("Empty stack") ;
+  	return O; /* Return value used to avoid warning*/
+  }
+  ```
+
+  ```c
+  void Pop(Stack S)
+  {
+  	if(IsEmpty(S))
+  		Error("Empty stack") ;
+  	else
+  		S->TopOfStack--;
+  }
+  ```
+
+  ```c
+  ElementType TopAndPop(Stack S)
+  {
+  	if(!Is Empty(S))
+  		return S->Array[ S->TopOfStack-- ];
+  	Error("Empty stack");
+  	return O; /* Return value used to avoid warnin */
+  }
+  ```
 
 #### Application
 

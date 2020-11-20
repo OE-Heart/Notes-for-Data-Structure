@@ -181,7 +181,7 @@ $$
 >
 >   the running time is never more than the running time of the test plus the larger of the running time of S1 and S2.
 >
->   		<img src="picture/1-3.png" alt="1-3" style="zoom:120%;" />
+>   <img src="picture/1-3.png" alt="1-3" style="zoom:120%;" />
 >   
 > - **Recursions** : 
 >
