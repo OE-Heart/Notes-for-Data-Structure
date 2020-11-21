@@ -57,15 +57,16 @@
    ```pseudocode
    Position Iter_Find( ElementType X, SearchTree T ) 
    { 
-   	while ( T ){
-       	if  ( X == T->Element )  
+   	while ( T )
+   	{
+       	if ( X == T->Element )  
    			return T ;  /* found */
-           if  ( X < T->Element )
+           if ( X < T->Element )
                T = T->Left ; /*move down along left path */
            else
     			T = T-> Right ; /* move down along right path */
        }  /* end while-loop */
-       return  NULL ;   /* not found */
+       return NULL ;   /* not found */
    } 
    ```
 
@@ -75,7 +76,7 @@
    Position FindMin( SearchTree T ) 
    { 
    	if ( T == NULL )   
-       	return  NULL; /* not found in an empty tree */
+       	return NULL; /* not found in an empty tree */
        else 
            if ( T->Left == NULL ) return T;  /* found left most */
            else return FindMin( T->Left );   /* keep moving to left */
@@ -164,5 +165,9 @@
 
 6. Average-Case Analysis
    
-   - 将$n$个元素存入二叉搜索树，树的高度将有插入序列决定
+   - The average depth over all nodes in a tree is $O(logN)$ on the assumption that all trees are equally likely.
+   - 将$n$个元素存入二叉搜索树，树的高度将由插入序列决定
 
+<img src="picture/5-1.png" alt="5-1" style="zoom:80%;" />
+
+The correct answer is A.

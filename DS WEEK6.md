@@ -97,7 +97,7 @@ PriorityQueue Initialize( int MaxElements )
     if ( MaxElements < MinPQSize ) 
 		return Error( "Priority queue size is too small" ); 
     H = malloc(sizeof( struct HeapStruct )); 
-    if ( H ==NULL ) 
+    if ( H == NULL ) 
 		return FatalError( "Out of space!!!" ); 
     /* Allocate the array plus one extra for sentinel */ 
     H->Elements = malloc(( MaxElements + 1 ) * sizeof( ElementType )); 
