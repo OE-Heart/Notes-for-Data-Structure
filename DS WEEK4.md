@@ -13,7 +13,7 @@
 #### Terminologies
 
 >- degree of a node : 结点的子树个数
->- degree a tree : 结点的度的最大值
+>- degree of a tree : 结点的度的最大值
 >- parent : 有子树的结点
 >- children : the roots of the subtrees of a parent
 >- siblings : children of the same parent
@@ -29,6 +29,10 @@
 #### List Representation
 
 - The size of each node depends on the number of branches.
+
+  <img src="picture/4-2.png" alt="4-2" style="zoom: 120%;" />
+
+  The correct answer is T.
 
 #### FirstChild-NextSibling Representation
 
@@ -118,6 +122,8 @@
        }
    }
    ```
+   
+   ![4-3](picture/4-3.png)
 
 #### Threaded Binary Trees
 
@@ -145,3 +151,5 @@ typedef struct ThreadedTreeNode
 ```
 
 - 线索化的实质就是将二叉链表中的空指针改为指向前驱或后继的线索。由于前驱和后继信息只有在遍历该二叉树时才能得到，所以，线索化的过程就是在遍历的过程中修改空指针的过程。
+
+  <img src="picture/4-4.png" alt="4-4" style="zoom:80%;" />
