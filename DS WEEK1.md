@@ -112,16 +112,7 @@ $$
 T_{rsum}(n)=2n+2
 $$
 
-But it takes more time to compute ea
-
-float sum (float list[], int n)
-{  /*add a list of numbers*/
-	float tempsum = 0; /*count = 1*/
-	int i;
-	for (i=0; i<n; i++)
-        /*count++*/
-		tempsum  += list[i]; /*count++*/
-    /*count++ for last excutaion of for*/ch step.
+But it takes more time to compute each step.  
 
 ***
 
