@@ -240,8 +240,14 @@ When $T(N)=O(f(N))$, check if $\lim\limits_{N\rightarrow\infty}\frac{T(N)}{f(N)}
 - Sequential mapping 连续存储，访问快
 
 - Find_Kth take $O(1)$ time.
+
 - MaxSize has to be estimated.
+
 - Insertion and Deletion not only take $O(N)$ times, but also involve a lot of data movements which takes time.
+
+  ![2-3](picture/2-3.png)
+
+  Query 查询
 
 #### Linked Lists
 

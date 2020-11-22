@@ -203,7 +203,36 @@ $$
 
 #### Heap Sort
 
-#### 查找一个序列中第k大的元素
+#### 查找一个序列中第k小的元素
+
+The function is to find the `K`-th smallest element in a list `A` of `N` elements.  The function `BuildMaxHeap(H, K)` is to arrange elements `H[1]` ... `H[K]` into a max-heap.  
+
+```c
+ElementType FindKthSmallest ( int A[], int N, int K )
+{   /* it is assumed that K<=N */
+    ElementType *H;
+    int i, next, child;
+
+    H = (ElementType *)malloc((K+1)*sizeof(ElementType));
+    for ( i=1; i<=K; i++ ) H[i] = A[i-1];
+    BuildMaxHeap(H, K);
+
+    for ( next=K; next<N; next++ ) {
+        H[0] = A[next];
+        if ( H[0] < H[1] ) {
+            for ( i=1; i*2<=K; i=child ) {
+                child = i*2;
+                if ( child ! =K && H[child+1] > H[child] ) child++;
+                if ( H[0] < H[child] )
+                    H[i] = H[child];
+                else break;
+            }
+            H[i] = H[0];
+        }
+    }
+    return H[1];
+}
+```
 
 ---
 
