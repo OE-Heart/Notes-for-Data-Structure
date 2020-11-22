@@ -201,7 +201,8 @@ $$
 >   ```
 >
 >   $$
->   $$ T(N)=T(N-1)+T(N-2)+2\geq Fib(N) \left(\frac{3}{2} \right)^n\leq Fib(N)\leq\left(\frac{5}{3}\right)^n $$
+>   T(N)=T(N-1)+T(N-2)+2\geq Fib(N)\\
+>    \left(\frac{3}{2} \right)^n\leq Fib(N)\leq\left(\frac{5}{3}\right)^n 
 >   $$
 >
 >   时间复杂度：$O(2^N)$      $T(N)$ grows **exponentially**

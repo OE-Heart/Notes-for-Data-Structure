@@ -186,7 +186,7 @@ int Gcd(int M, int N)
 ```c
 long int Pow(long int X, int N)
 {
-	if (N == 0) return 1;T(2N)/T(N)\approx8
+	if (N == 0) return 1;
 	if (N == 1) return X;
 	if (IsEven(N)) return Pow(X*X, N/2);/*return Pow(X, N/2)*Pow(X, N/2) affects the efficiency*/
 	else return Pow(X*X, N/2)*X; /*return Pow(X, N-1)*X is the same*/
@@ -237,12 +237,6 @@ When $T(N)=O(f(N))$, check if $\lim\limits_{N\rightarrow\infty}\frac{T(N)}{f(N)}
   - Finding previous
 
 #### Simple Array implementation of Lists
-
-- ```
-  se 
-      	return S[ X ] = Find( S[ X ], S );
-  }
-  ```
 
 - Sequential mapping 连续存储，访问快
 
