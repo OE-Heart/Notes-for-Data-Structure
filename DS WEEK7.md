@@ -21,13 +21,13 @@
   {
   	/* step 1: read the relations in */
       Initialize N disjoint sets;
-      while ( read in a ~ b ) 
+      while ( read in a ~ b )
       {
       	if ( !(Find(a) == Find(b)) )  /*Dynamic(on-line)*/
   			Union the two sets;
       } /* end-while */
       /* step 2: decide if a ~ b */
-      while ( read in a and b ) 
+      while ( read in a and b )
           if ( Find(a) == Find(b) )
           	output( true );
           else   
@@ -36,7 +36,7 @@
   ```
 
 - **Elements** of the sets : $1,2,3,\cdots,N$
-- **Sets** : $S_1,S_2,\cdots\,and\,S_i\bigcap S_j=\emptyset\,(if\,i\neq j)$
+- **Sets** : $S_1,S_2,\cdots\,and\,S_i\bigcap S_j=\emptyset\,(if\quad i\neq j)$
 - **Operations** :
   
   - Union( $i, j$ ) = Replace $S_i$ and $S_j$ by $S=S_i\bigcup S_j$
@@ -57,7 +57,8 @@
 - **Implementation 2** :
 
   - The elements are numbered from 1 to N, hence they can be used as indices of an array.
-- S[ element ] = the element’s parent
+  - S[ element ] = the element’s parent
+  
   - Note : S[ root ] = 0 and set name = root index
   - 数组初始化全部为0
   
@@ -121,6 +122,7 @@ Algorithm using union-find operations:
 - **Time complexity** of $N$ Union and $M$ Find operations is now $O(N+M\log_2N)$.
 
 ```c
+/* Assumes Rootl and Root2 are roots*/
 void SetUnion(DisjSet S, SetType Root1, SetType Root2)
 {
     if (S[Root1] <= S[Root2])
@@ -139,8 +141,10 @@ void SetUnion(DisjSet S, SetType Root1, SetType Root2)
 #### Union-by-Height
 
 - Always change the shallow tree
+- 保证所有的树的深度最多是$O(logN)$
 
 ```c
+/* Assumes Rootl and Root2 are roots*/
 void SetUnion(DisjSet S, SetType Root1, SetType Root2)
 {
 	if ( S[Root2] < S[Root1])  /*Root2 is deeper set*/

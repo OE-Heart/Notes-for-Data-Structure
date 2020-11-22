@@ -122,7 +122,7 @@ PriorityQueue Initialize( int MaxElements )
 
    ```c
    /* H->Element[ 0 ] is a sentinel that is no larger than the minimum element in the heap.*/ 
-   void  Insert( ElementType X,  PriorityQueue H ) 
+   void Insert( ElementType X, PriorityQueue H ) 
    { 
    	int i; 
        if ( IsFull( H )) 
@@ -184,6 +184,17 @@ $$
 
 4. BuildHeap
 
+   将N 个关键字以任意顺序放入树中，保持结构特性，再执行下滤
+
+   ```c
+   for (i = N/2; i > 0; i--)
+   	PercolateDown(i);
+   ```
+
+   $$
+   T(N)=O(N)
+   $$
+
    **[Theorem]** For the perfect binary tree of height $h$ containing $2^{h+1}-1$ nodes, the sum of the heights of the nodes is $2^{h+1}-1-(h+1)$.
 
 ---
@@ -203,3 +214,5 @@ $$
 > - DeleteMin will take $d-1$ comparisons to find the smallest child. Hence the total time complexity would be $O(d \log_d N)$.
 > - *2 or /2 is merely **a bit shift**, but *d or /d is not.
 > - When the priority queue is too large to fit entirely in main memory, a d-heap will become interesting.
+
+<img src="picture/6-2.png" alt="6-2"  />
