@@ -393,7 +393,7 @@ When $T(N)=O(f(N))$, check if $\lim\limits_{N\rightarrow\infty}\frac{T(N)}{f(N)}
   {
   	int i;
   	for(i = O; i <= MaxDegree; i++)
-  		Poly->CoeffArray[ i J = O;
+  		Poly->CoeffArray[ i ] = O;
   	Poly->HighPower = O;
   }
   ```

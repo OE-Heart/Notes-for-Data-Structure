@@ -30,10 +30,10 @@ zijinxuxu@zju.edu.cn  任金伟
 
 - An algorithm can be described by human languages, flow charts, some programming languages, or pseudocode.
 
-#### [Example] Selection Sort: Sort a set of $n\geq1$ integers in increasing order
+#### [Example] Selection Sort : Sort a set of $n\geq1$ integers in increasing order
 
 ```pseudocode
-for (i=0;i<n;i++){
+for (i = 0; i < n; i++){
 	Examine list[i] to list[n-1] and suppose that the smallest integer is at list[min];
 	Interchange list[i] and list[min];
 }
@@ -75,7 +75,7 @@ $$
 T(rows, cols) = 2rows\times cols + 2rows+1
 $$
 
-非对称
+- 非对称
 
 #### [Example] Iterative function for summing a list of numbers
 
@@ -179,7 +179,7 @@ $$
 >   		if ( Condition )  S1;
 >     		else  S2;
 >
->   the running time is never more than the running time of the test plus the larger of the running time of S1 and S2.
+>   The running time is never more than the running time of the test plus the larger of the running time of S1 and S2.
 >
 >   <img src="picture/1-3.png" alt="1-3" style="zoom:120%;" />
 >   

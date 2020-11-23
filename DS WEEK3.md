@@ -217,11 +217,13 @@ struct StackRecord {
 
 3. Infix to Postfix Conversion
 
+   - 读到一个操作数时立即把它放到输出中
+   - 读到一个操作符时从栈中弹出栈元素直到发现优先级更低的元素为止，再将操作符压入栈中
    - The order of operands is the **same** in infix and postfix.
    - Operators with **higher** precedence appear **before** those with **lower** precedence.
    - Never pop a ’(‘ from the stack except when processing a ‘)’.
    - When ‘(’ is not in the stack, its precedence is the highest; but when it is in the stack, its precedence is the lowest. 
-   - Exponentiation associates right to left.
+   - Exponentiation associates **right to left**.
 
 4. Function Calls (System Stack)
 
@@ -258,3 +260,4 @@ struct QueueRecord {
 
 <img src="picture/3-3.png" alt="3-3" style="zoom: 64%;" /><img src="picture/3-4.png" alt="3-4" style="zoom: 64%;" />
 
+- The maximum capacity of this queue is 5.![3-5](picture/3-5.png)
