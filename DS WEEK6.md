@@ -152,27 +152,27 @@ PriorityQueue Initialize( int MaxElements )
            Error( "Priority queue is empty" ); 
            return H->Elements[ 0 ];   
        } 
-       MinElement = H->Elements[ 1 ];  /* save the min element */
-       LastElement = H->Elements[ H->Size-- ];  /* take last and reset size */
-       for ( i = 1; i * 2 <= H->Size; i = Child )  /* Find smaller child */ 
+       MinElement = H->Elements[ 1 ];  /*Save the min element*/
+       LastElement = H->Elements[ H->Size-- ];  /*Take last and reset size*/
+       for ( i = 1; i * 2 <= H->Size; i = Child )  /*Find smaller child*/ 
        {
            Child = i * 2; 
            if (Child != H->Size && H->Elements[Child+1] < H->Elements[Child]) 
       	    	Child++;     
-           if ( LastElement > H->Elements[ Child ] )   /* Percolate one level */ 
+           if ( LastElement > H->Elements[ Child ] )   /*Percolate one level*/ 
       	     	H->Elements[ i ] = H->Elements[ Child ]; 
            else     
-           	break;   /* find the proper position */
+           	break;   /*Find the proper position*/
        } 
        H->Elements[ i ] = LastElement; 
        return MinElement; 
    }
    ```
 $$
-   T(N)=O(\log N)
+T(N)=O(\log N)
 $$
 
-#### Other Heap Operations    
+#### Other Heap Operations 
 
 - 查找除最小值之外的值需要对整个堆进行线性扫描
 
@@ -213,16 +213,16 @@ ElementType FindKthSmallest ( int A[], int N, int K )
     ElementType *H;
     int i, next, child;
 
-    H = (ElementType *)malloc((K+1)*sizeof(ElementType));
-    for ( i=1; i<=K; i++ ) H[i] = A[i-1];
+    H = (ElementType*)malloc((K+1)*sizeof(ElementType));
+    for ( i = 1; i <= K; i++ ) H[i] = A[i-1];
     BuildMaxHeap(H, K);
 
-    for ( next=K; next<N; next++ ) {
+    for ( next = K; next < N; next++ ) {
         H[0] = A[next];
         if ( H[0] < H[1] ) {
-            for ( i=1; i*2<=K; i=child ) {
+            for ( i = 1; i*2 <= K; i = child ) {
                 child = i*2;
-                if ( child ! =K && H[child+1] > H[child] ) child++;
+                if ( child != K && H[child+1] > H[child] ) child++;
                 if ( H[0] < H[child] )
                     H[i] = H[child];
                 else break;
