@@ -107,6 +107,7 @@ T(\frac N2)=2T(\frac N {2^2})+c\frac N2\\
 T(1)=2T(\frac N{2^k})+c\frac N{2^{k-1}}\\
 \therefore T(N)=2^kT(\frac N{2^k})+kcN=N\cdot O(1)+cN\log N
 $$
+
 **Algorithm 4 On-line Algorithm**  在线算法
 
 ```c
@@ -130,13 +131,13 @@ T(N)=O(N)
 $$
 
 - A[ ] is scanned **once** only. 扫描一次，无需存储（处理streaming data）
-- 在任意时刻，算法都能对它已经读入的数据给出子序列问题的正确答案(其他算法不具有这个特性)
+- 在任意时刻，算法都能对它已经读入的数据给出子序列问题的正确答案 (其他算法不具有这个特性)
 
 ****
 
 ### 1.4 Logrithms in the Running Time
 
-- 如果一个算法用常数时间将问题的大小削减为其一部分(通常是1/2)，那么该算法就是$O(logN)$的
+- 如果一个算法用常数时间将问题的大小削减为其一部分 (通常是1/2)，那么该算法就是$O(logN)$的
 
 #### [Example] Binary Search
 
@@ -218,7 +219,7 @@ When $T(N)=O(f(N))$, check if $\lim\limits_{N\rightarrow\infty}\frac{T(N)}{f(N)}
 
 #### [Definition] Data Type = {Objects} and {Operations}
 
-#### [Definition] An Abstract Data Type(ADT) is a data type that is organized in such a way that the *specification* on the objects and *specification* of the operations on the objects are *separated from* the *representation* of the objects and the *implementation* on the operations.
+#### [Definition] An Abstract Data Type (ADT) is a data type that is organized in such a way that the *specification* on the objects and *specification* of the operations on the objects are *separated from* the *representation* of the objects and the *implementation* on the operations.
 
 ****
 
@@ -445,7 +446,7 @@ When $T(N)=O(f(N))$, check if $\lim\limits_{N\rightarrow\infty}\frac{T(N)}{f(N)}
 
 2. Multilists
 
-#### Cursor Implementation of Linked Lists(no pointer)
+#### Cursor Implementation of Linked Lists (no pointer)
 
 <img src="picture/2-2.png" alt="2-2" style="zoom:80%;" />
 

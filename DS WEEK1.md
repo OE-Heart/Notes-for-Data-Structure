@@ -112,7 +112,7 @@ $$
 T_{rsum}(n)=2n+2
 $$
 
-But it takes more time to compute each step.
+But it takes more time to compute each step.  
 
 ***
 
@@ -202,7 +202,7 @@ $$
 >
 >   $$
 >   T(N)=T(N-1)+T(N-2)+2\geq Fib(N)\\
->   \left(\frac{3}{2} \right)^n\leq Fib(N)\leq\left(\frac{5}{3}\right)^n
+>    \left(\frac{3}{2} \right)^n\leq Fib(N)\leq\left(\frac{5}{3}\right)^n 
 >   $$
 >
 >   时间复杂度：$O(2^N)$      $T(N)$ grows **exponentially**
