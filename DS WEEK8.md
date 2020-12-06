@@ -8,7 +8,7 @@
 
 #### Undirected graph 
 
-- $( v_i , v_j ) = ( v_j , v_i )$ = the same edge.
+- $( v_i , v_j ) = ( v_j , v_i )$ = the same edge.，，，，，，，，，，，
 
 #### Directed graph(diagraph)
 
