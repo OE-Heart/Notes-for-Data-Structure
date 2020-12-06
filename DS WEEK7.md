@@ -196,7 +196,7 @@ SetType Find( ElementType X, DisjSet S )
 
 #### [Lemma] Let $T(M,N)$ be the maximum time required to process an intermixed sequence of $M\geq N$ finds and $N-1$ unions, then $k_1M\alpha(M,N)\leq T(M,N)\leq k_2M\alpha(M,N)$ for some positive constants $k_1$ and $k_2$.
 
-- Ackermann’s Function  
+- Ackermann’s Function
   $$
   A(i,j)=\left\{
   \begin{array}{rcl}
