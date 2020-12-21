@@ -20,19 +20,19 @@ $$
 ```c
 void Shellsort( ElementType A[ ], int N ) 
 { 
-    int  i, j, Increment; 
-    ElementType  Tmp; 
-    for ( Increment = N / 2; Increment > 0; Increment /= 2 )  
-	/*h sequence */
-	for ( i = Increment; i < N; i++ ) { /* insertion sort */
-        Tmp = A[ i ]; 
-	    for ( j = i; j >= Increment; j - = Increment ) 
-            if( Tmp < A[ j - Increment ] )
-                A[ j ] = A[ j - Increment ]; 
-        	else 
-		    	break; 
-		A[ j ] = Tmp; 
-	} /* end for-I and for-Increment loops */
+    int i, j, Increment; 
+    ElementType Tmp; 
+    for ( Increment = N / 2; Increment > 0; Increment /= 2 )  /*h sequence */
+		for ( i = Increment; i < N; i++ ) 
+        { /* insertion sort */
+        	Tmp = A[ i ]; 
+	    	for ( j = i; j >= Increment; j -= Increment ) 
+            	if( Tmp < A[ j-Increment ] )
+                	A[ j ] = A[ j-Increment ]; 
+        		else 
+		    		break; 
+			A[ j ] = Tmp; 
+		} /* end for-I and for-Increment loops */
 }
 ```
 

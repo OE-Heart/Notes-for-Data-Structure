@@ -154,8 +154,8 @@ void X_Sort (ElementType A[], int N)
 ```c
 void Insertion(ElementType A[], int N)
 { 
-	int  j, P; 
-	ElementType  Tmp; 
+	int j, P; 
+	ElementType Tmp; 
 
 	for ( P = 1; P < N; P++ ) 
     { 
