@@ -31,7 +31,7 @@ void Shellsort( ElementType A[ ], int N )
                 	A[ j ] = A[ j-Increment ]; 
         		else 
 		    		break; 
-			A[ j ] = Tmp; 
+			A[ j ] = Tmp; m
 		} /* end for-I and for-Increment loops */
 }
 ```

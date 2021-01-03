@@ -67,7 +67,7 @@ void Quicksort( ElementType A[ ], int N )
 /* Return median of Left, Center, and Right */ 
 /* Order these and hide the pivot */ 
 ElementType Median3( ElementType A[ ], int Left, int Right ) 
-{ ·
+{
     int Center = ( Left+Right )/2; 
     if ( A[ Left ] > A[ Center ] ) 
         Swap( &A[ Left ], &A[ Center ] ); 
