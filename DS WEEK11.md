@@ -9,7 +9,7 @@ void DFS(Vertex V)
     visited[ V ] = true;  /*mark this vertex to avoid cycles*/
     for ( each W adjacent to V )
         if ( !visited[ W ] ) DFS( W );
-} /*T = O( |E| + |V| ) as long as adjacency lists are used*/
+} /*T = O(|E|+|V|) as long as adjacency lists are used*/
 ```
 
 #### Undirected Graphs
@@ -111,7 +111,7 @@ void FindArt(Vertex V)
 			FindArt(W);
 			if(Low[W] >= Num[V])
 				printf("%v is an articulation point\n", v);
-			Low[V] = Min(Low[V], Low[W]); /* Rule 3*/
+			Low[V] = Min(Low[V], Low[W]); /*Rule 3*/
 		}
 		else
 			if(Parent[ V ] != W) /*Back edge*/

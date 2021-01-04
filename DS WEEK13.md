@@ -243,14 +243,14 @@ void Qselect(ElementType A[ ], int k, int Left, int Right)
 			else
 				break;
 		}
-		Swap(&A[ i ], &A[ Right-1 ]); /* Restore pivot*/
+		Swap(&A[ i ], &A[ Right-1 ]); /*Restore pivot*/
 
         if(k <= i)
 			Qselect(A, k, Left, i-1);
 		else if (k > i+1)
 			Qselect(A, k, i+1, Right);
 	}
-	else /*Doan insertion sort on the subarray */
+	else /*Doan insertion sort on the subarray*/
 		InsertionSort(A+Left, Right-Left+1);
 }
 ```

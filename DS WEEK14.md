@@ -75,14 +75,14 @@ HashTable InitializeTable( int TableSize )
 	    Error( "Table size too small" );  
         return NULL;  
     } 
-    H = malloc( sizeof( struct HashTbl ) );  /* Allocate table */
+    H = malloc( sizeof( struct HashTbl ) );  /*Allocate table*/
     if ( H == NULL ) FatalError( "Out of space!!!" ); 
-    H->TableSize = NextPrime( TableSize );  /* Better be prime */
+    H->TableSize = NextPrime( TableSize );  /*Better be prime*/
     H->TheLists = malloc( sizeof( List )* H->TableSize );  /*Array of lists*/
     if ( H->TheLists == NULL ) FatalError( "Out of space!!!" );
     H->TheList = malloc(H->TableSize*sizeof(struct ListNode));
     for( i = 0; i < H->TableSize; i++ ) 
-    {   /* Allocate list headers */
+    {   /*Allocate list headers*/
 		//H->TheLists[ i ] = malloc( sizeof( struct ListNode ) ); /* Slow! */
 		if ( H->TheLists[ i ] == NULL ) FatalError( "Out of space!!!" ); 
 		else H->TheLists[ i ]->Next = NULL;
@@ -100,7 +100,7 @@ Position Find ( ElementType Key, HashTable H )
     List L; 
     L = H->TheLists[ Hash( Key, H->TableSize ) ]; 
     P = L->Next; 
-    while( P != NULL && P->Element != Key )  /* Probably need strcmp */ 
+    while( P != NULL && P->Element != Key )  /*Probably need strcmp*/ 
 		P = P->Next; 
     return P; 
 } 
@@ -140,13 +140,13 @@ Algorithm: insert key into an array of hash table
 {
     index = hash(key);
     initialize i = 0 ------ the counter of probing;
-    while ( collision at index ) 
+    while (collision at index) 
     {
-		index = ( hash(key) + f(i) ) % TableSize; /*f(i) is collision resolving function*/
-		if ( table is full ) break;
-		else i ++;
+		index = (hash(key)+f(i))%TableSize; /*f(i) is collision resolving function*/
+		if (table is full) break;
+		else i++;
     }
-    if ( table is full ) ERROR (“No space left”);
+    if (table is full) ERROR (“No space left”);
     else insert key at index;
 }
 ```
@@ -157,5 +157,5 @@ Algorithm: insert key into an array of hash table
 
 - $F(i)$ is a linear function of $i$, such as $F(i)=i$.
 - 逐个探测每个单元(必要时可以绕回)以查找出一个空单元
-- Cause **primary clustering** : any key that hashes into the cluster will add to the cluster after several attempts to resolve the collision.
 - 使用线性探测的预期探测次数对于插入和不成功的查找来说大约是$\frac{1}{2}(1+\frac{1}{(1-\lambda)^2})$，对于成功的查找来说是$\frac{1}{2}(1+\frac{1}{1-\lambda})$
+- Cause **primary clustering** : any key that hashes into the cluster will add to the cluster after several attempts to resolve the collision.
