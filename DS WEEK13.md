@@ -9,11 +9,11 @@
 ```pseudocode
 void Quicksort( ElementType A[ ], int N )
 {
-	if ( N < 2 )  return;
+	if (N < 2) return;
     pivot = pick any element in A[ ]; 
     Partition S = { A[ ] \ pivot } into two disjoint sets:
-    	A1={ a in S | a <= pivot } and A2={ a in S | a >= pivot };
-    A = Quicksort(A1, N1)  { pivot }  Quicksort(A2, N2);
+    	A1 = { a in S | a <= pivot } and A2 = { a in S | a >= pivot };
+    A = Quicksort(A1, N1) and { pivot } and Quicksort(A2, N2);
 }
 ```
 
@@ -25,7 +25,7 @@ void Quicksort( ElementType A[ ], int N )
 ##### A Wrong Way
 
 - Pivot = A[ 0 ]
-- The worst case : A[ ] is presorted, quicksort will take $O(N^2)$ time to do noting
+- The worst case : A[ ] is presorted, quicksort will take $O(N^2)$ time to do nothing
 
 ##### A Safe Maneuver
 
@@ -119,18 +119,141 @@ $$
 
 - $i$ is the number of the elements in $S_1$.
 
-- **The Worst Case** : $T(N)=T(N-1)+cN\rarr T(N)=O(N^2)$
+- **The Worst Case**
+  $$
+  T(N)=T(N-1)+cN
+  $$
 
-- **The Best Case** : $T(N)=2T(N/2)+cN\rarr T(N)=O(N\log N)$
+  $$
+  T(N-1)=T(N-2)+c(N-1)
+  $$
 
-- **The Average Case** : 
+  $$
+  \cdots
+  $$
+
+  $$
+  T(2)=T(1)+2c
+  $$
+
+  $$
+  T(N)=T(1)+c\sum^N_{i=2}i=O(N^2)
+  $$
+
+- **The Best Case**
+  $$
+  T(N)=2T(N/2)+cN
+  $$
+
+  $$
+  \frac{T(N)}{N}=\frac{T(N/2)}{N/2}+c
+  $$
+
+  $$
+  \frac{T(N/2)}{N/2}=\frac{T(N/4)}{N/4}+c
+  $$
+
+  $$
+  \cdots
+  $$
+
+  $$
+  \frac{T(2)}{2}=\frac{T(1)}{1}+c
+  $$
+
+  $$
+  \frac{T(N)}{N}=\frac{T(1)}{1}+c\log N\frac{T(N)}{N}=\frac{T(1)}{1}+c\log N
+  $$
+
+  $$
+  T(N)=cN\log N+N=O(N\log N)
+  $$
+
+- **The Average Case**
 
   - Assume the average value of $T( i )$ for any $i$ is $\frac{1}{N}\left[\sum^{N-1}_{j=0}T(j)\right]$
     $$
-    T(N)=\frac{2}{N}\left[\sum^{N-1}_{j=0}T(j)\right]+cN\rarr T(N)=O(N\log N)
+    T(N)=\frac{2}{N}\left[\sum^{N-1}_{j=0}T(j)\right]+cN
     $$
 
-- 第$K$最大(最小)元
+  $$
+  NT(N)=2\left[\sum^{N-1}_{j=0}T(j)\right]+cN^2
+  $$
+
+  $$
+  (N-1)T(N-1)=2\left[\sum^{N-2}_{j=0}T(j)\right]+c(N-1)^2
+  $$
+
+  $$
+  NT(N)-(N-1)T(N-1)=2T(N-1)+2cN-c
+  $$
+
+  $$
+  NT(N)=(N+1)T(N-1)+2cN
+  $$
+
+  $$
+  \frac{T(N)}{N+1}=\frac{T(N-1)}{N}+\frac{2c}{N+1}
+  $$
+
+  $$
+  \frac{T(N-1)}{N}=\frac{T(N-2)}{N-1}+\frac{2c}{N}
+  $$
+
+  $$
+  \cdots
+  $$
+
+  $$
+  \frac{T(2)}{3}=\frac{T(1)}{2}+\frac{2c}{3}
+  $$
+
+  $$
+  \frac{T(N)}{N+1}=\frac{T(1)}{2}+2c\sum^{N+1}_{i=3}\frac{1}{i}
+  $$
+
+  $$
+  T(N)=O(N\log N)
+  $$
+
+
+#### Quickselect
+
+- 查找第$K$最大(最小)元
+
+```c
+/*Places the kth sma11est element in the kth position*/
+/*Because arrays start at 0, this will be index k-1*/
+void Qselect(ElementType A[ ], int k, int Left, int Right)
+{
+	int i, j;
+	ElementType Pivot;
+
+    if (Left + Cutoff <= Right)
+	{
+		Pivot = Median3(A, Left, Right);
+		i = Left; 
+        j = Right-1;
+		for( ; ; )
+		{
+			while(A[ ++i ] < Pivot){ }
+			while(A[ --j ] > Pivot){ }
+			if(i < j)
+				Swap(&A[ i ], &A[ j ]);
+			else
+				break;
+		}
+		Swap(&A[ i ], &A[ Right-1 ]); /* Restore pivot*/
+
+        if(k <= i)
+			Qselect(A, k, Left, i-1);
+		else if (k > i+1)
+			Qselect(A, k, i+1, Right);
+	}
+	else /*Doan insertion sort on the subarray */
+		InsertionSort(A+Left, Right-Left+1);
+}
+```
 
 ### 7.8 Sorting Large Structures
 
@@ -158,7 +281,7 @@ Algorithm
     initialize count[ ];
     while(read in a student’s record)
         insert to list count[stdnt.grade];
-    for(i = 0; i < M; i++) 
+    for(int i = 0; i < M; i++) 
 	{
         if(count[i]) output list count[i];
     }

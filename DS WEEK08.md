@@ -137,10 +137,10 @@ $$
 
 #### [Definition] A *topological order* is a linear ordering  of the vertices of a graph such that, for any two vertices, $i$, $j$, if $i$ is a predecessor of $j$ in the network then $i$ precedes $j$ in the linear ordering.
 
-- Note : The topological orders may **not be unique** for a  network.
+- Note : The topological orders may **not be unique** for a network.
 
 ```c
-/*Test an AOV for feasibility, and generate a topological order if possible.*/
+/*Test an AOV for feasibility, and generate a topological order if possible*/
 void Topsort( Graph G )
 {   
 	int Counter;
@@ -165,7 +165,7 @@ T=O(|V|^2)
 $$
 
 ```c
-/*Improvment:Keep all the unassigned vertices of degree 0 in a special box (queue or stack).*/
+/*Improvment:Keep all the unassigned vertices of degree 0 in a special box (queue or stack)*/
 void Topsort( Graph G )
 {   
 	Queue Q;

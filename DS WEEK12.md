@@ -103,26 +103,26 @@ void Heapsort( ElementType A[ ], int N )
 ```c
 void MSort( ElementType A[ ], ElementType TmpArray[ ], int Left, int Right ) 
 {   
-    int  Center; 
+    int Center; 
     if ( Left < Right ) 
-    {  /*if there are elements to be sorte */
-		Center = ( Left + Right ) / 2; 
-		MSort( A, TmpArray, Left, Center ); 	/*T( N / 2 )*/
-		MSort( A, TmpArray, Center + 1, Right ); 	/*T( N / 2 )*/
-		Merge( A, TmpArray, Left, Center + 1, Right );  /*O( N )*/
+    {  /*if there are elements to be sorte*/
+		Center = (Left+Right)/2; 
+		MSort(A, TmpArray, Left, Center); 	/*T(N/2)*/
+		MSort(A, TmpArray, Center+1, Right); 	/*T(N/2)*/
+		Merge(A, TmpArray, Left, Center+1, Right);  /*O(N)*/
     } 
 } 
 
 void Mergesort( ElementType A[ ], int N ) 
 {   
-    ElementType  *TmpArray;  /*need O(N) extra space*/
-    TmpArray = malloc( N * sizeof( ElementType ) ); 
-    if ( TmpArray != NULL ) 
+    ElementType *TmpArray;  /*need O(N) extra space*/
+    TmpArray = malloc(N*sizeof(ElementType)); 
+    if (TmpArray != NULL) 
     { 
-		MSort( A, TmpArray, 0, N - 1 ); 
-		free( TmpArray ); 
+		MSort(A, TmpArray, 0, N-1); 
+		free(TmpArray); 
     } 
-    else FatalError( "No space for tmp array!!!" ); 
+    else FatalError("No space for tmp array!!!"); 
 }
 ```
 
@@ -132,10 +132,10 @@ void Mergesort( ElementType A[ ], int N )
 /*Lpos = start of left half, Rpos = start of right half*/ 
 void Merge( ElementType A[ ], ElementType TmpArray[ ], int Lpos, int Rpos, int RightEnd ) 
 {   
-	int  i, LeftEnd, NumElements, TmpPos; 
-    LeftEnd = Rpos - 1; 
+	int i, LeftEnd, NumElements, TmpPos; 
+    LeftEnd = Rpos-1; 
     TmpPos = Lpos; 
-    NumElements = RightEnd - Lpos + 1; 
+    NumElements = RightEnd-Lpos+1; 
     while( Lpos <= LeftEnd && Rpos <= RightEnd ) /*main loop*/ 
         if ( A[ Lpos ] <= A[ Rpos ] ) 
 			TmpArray[ TmpPos++ ] = A[ Lpos++ ]; 
@@ -143,10 +143,10 @@ void Merge( ElementType A[ ], ElementType TmpArray[ ], int Lpos, int Rpos, int R
 			TmpArray[ TmpPos++ ] = A[ Rpos++ ]; 
     while( Lpos <= LeftEnd ) /*Copy rest of first half*/ 
         TmpArray[ TmpPos++ ] = A[ Lpos++ ]; 
-    while( Rpos <= RightEnd ) /*Copy rest of second half */ 
+    while( Rpos <= RightEnd ) /*Copy rest of second half*/ 
         TmpArray[ TmpPos++ ] = A[ Rpos++ ]; 
     for( i = 0; i < NumElements; i++, RightEnd-- ) 
-        /*Copy TmpArray back */ 
+        /*Copy TmpArray back*/ 
         A[ RightEnd ] = TmpArray[ RightEnd ]; 
 }
 ```
