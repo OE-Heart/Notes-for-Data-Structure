@@ -52,7 +52,7 @@
 
    - $T(N)=S(N)=O(d)$ where $d$ is the depth of X
 
-   Iterative program:
+   Iterative program :
 
    ```pseudocode
    Position Iter_Find( ElementType X, SearchTree T ) 
@@ -60,13 +60,13 @@
    	while ( T )
    	{
        	if ( X == T->Element )  
-   			return T ;  /* found */
+   			return T;  /* found */
            if ( X < T->Element )
-               T = T->Left ; /*move down along left path */
+               T = T->Left; /*move down along left path */
            else
-    			T = T-> Right ; /* move down along right path */
+    			T = T-> Right; /* move down along right path */
        }  /* end while-loop */
-       return NULL ;   /* not found */
+       return NULL;   /* not found */
    } 
    ```
 
@@ -86,7 +86,7 @@
 3. FindMax
 
    ```pseudocode
-   Position  FindMax( SearchTree T ) 
+   Position FindMax( SearchTree T ) 
    { 
    	if ( T != NULL ) 
        	while ( T->Right != NULL )   
@@ -161,7 +161,8 @@
    ```
 
    - $T(N)=O(d)$
-   - lazy deletion : 不做实际free操作，在结点上标记结点是否有效
+
+   > Note : If there are not many deletions, then **lazy deletion** may be employed: add a flag field to each node, to mark if a node is active or is deleted.  Therefore we can delete a node without actually freeing the space of that node.  If a deleted key is reinserted, we won’t have to call malloc again.
 
 6. Average-Case Analysis
    
@@ -171,3 +172,6 @@
 <img src="picture/5-1.png" alt="5-1" style="zoom:80%;" />
 
 The correct answer is A.
+
+---
+

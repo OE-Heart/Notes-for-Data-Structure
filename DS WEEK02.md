@@ -449,5 +449,7 @@ When $T(N)=O(f(N))$, check if $\lim\limits_{N\rightarrow\infty}\frac{T(N)}{f(N)}
 
 <img src="picture/2-2.png" alt="2-2" style="zoom:80%;" />
 
+---
+
 
 

@@ -1,6 +1,6 @@
 # WEEK 11
 
-### 6.6 Applications of Depth-First Search
+### 6.7 Applications of Depth-First Search
 
 ```c
 /*a generalization of preorder traversal*/
@@ -190,3 +190,4 @@ void Insertion(ElementType A[], int N)
 
 #### [Theorem] Any algorithm that sorts by exchanging adjacent elements requires $\Omega(N^2)$ time on average
 
+---

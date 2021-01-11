@@ -105,7 +105,7 @@
    }
    ```
    
-   Iterative Program
+   Iterative Program :
    
    ```pseudocode
    void iter_inorder( tree_ptr tree )
@@ -114,9 +114,10 @@
    	for ( ; ; )  
    	{
        	for ( ; tree; tree = tree->Left )
-           	Push ( tree, S ) ;
-        	tree = Top ( S );  Pop( S );
-        	if ( ! tree )  break;
+           	Push ( tree, S );
+        	tree = Top ( S );  
+        	Pop( S );
+        	if ( !tree ) break;
         	visit ( tree->Element );
         	tree = tree->Right; 
        }

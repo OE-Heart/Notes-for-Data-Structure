@@ -57,6 +57,8 @@ $$
 - Shellsort is a very simple algorithm, yet with an extremely complex analysis.  
 - It is good for sorting up to moderately large input (tens of thousands).
 
+---
+
 ### 7.5 Heapsort
 
 #### Algorithm1
@@ -85,7 +87,7 @@ void Heapsort( ElementType A[ ], int N )
 {
 	int i; 
     for ( i = N / 2; i >= 0; i-- ) /*BuildHeap*/ 
-    	PercDown( A, i, N ); 
+    	PercDown( A, i, N );
     for ( i = N - 1; i > 0; i-- ) 
     { 
         Swap( &A[ 0 ], &A[ i ] ); /*DeleteMax*/ 
@@ -97,6 +99,8 @@ void Heapsort( ElementType A[ ], int N )
 - [Theorem] The average number of comparisons used to heapsort a random permutation of N distinct items is $2N\log N-O(N\log\log N)$.
 
 > Note : Although Heapsort gives **the best average time**, in practice it is slower than a version of Shellsort that uses Sedgewick’s increment sequence.
+
+---
 
 ### 7.6 Mergesort
 
@@ -163,3 +167,5 @@ T(N)=O(N+N\log N)
 $$
 
 > Note : Mergesort requires linear extra memory, and copying an array is slow. It is hardly ever used for internal sorting, but is quite useful for external sorting.
+
+---

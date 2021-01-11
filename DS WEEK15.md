@@ -85,6 +85,8 @@ void Insert(ElementType Key, HashTable H)
 > - If double hashing is correctly implemented, simulations imply that the **expected** number of probes is almost the same as for a **random** collision resolution strategy.
 > - Quadratic probing does not require the use of a second hash function and is thus likely to be **simpler and faster** in practice.
 
+---
+
 ### 8.5 Rehashing
 
 - Build another table that is about twice as big.
@@ -117,3 +119,4 @@ HashTable Rehash(HashTable H)
 }
 ```
 
+---

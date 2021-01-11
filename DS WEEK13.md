@@ -255,11 +255,15 @@ void Qselect(ElementType A[ ], int k, int Left, int Right)
 }
 ```
 
+---
+
 ### 7.8 Sorting Large Structures
 
 - Swapping large structures can be very much expensive.
 - Add a pointer field to the structure and swap pointers instead – **indirect sorting**. Physically rearrange the structures at last if it is really necessary.
 - Table Sort
+
+---
 
 ### 7.9 A General Lower Bound for Sorting
 
@@ -270,6 +274,8 @@ void Qselect(ElementType A[ ], int k, int Left, int Right)
 - If the height of the tree is $k$, then $N! \leq 2^{k-1}\rarr k\geq\log(N!)+1$ 
 - Since $N!\geq (N/2)^{N/2}$ and $\log_2N!\geq(N/2)\log_2(N/2) = \Theta(N\log_2N )$
 - Therefore $T(N)=k\geq c\cdot N\log_2 N$
+
+---
 
 ### 7.10 Bucket Sort and Radix Sort
 
@@ -292,6 +298,8 @@ $$
 T(N,M)=O(M+N)
 $$
 
+---
+
 ### 7.11 Radix Sort
 
 ![image-20201221203826847](picture/image-20201221203826847.png)
@@ -299,3 +307,5 @@ $$
 ![image-20201221203950519](picture/image-20201221203950519.png)
 
 - $T=O(P(N+B))$ where $P$ is the number of passes, $N$ is the number of elements to sort, and $B$ is the number of buckets.
+
+---

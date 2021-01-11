@@ -89,6 +89,8 @@ $$
   $$
   
 
+---
+
 ### 6.2 Representation of Graphs
 
 #### Adjacency Matrix
@@ -120,6 +122,8 @@ $$
 
 - adj_mat [ i ] [ j ] = weight
 - adjacency lists / multilists :  add a weight field to the node
+
+---
 
 ### 6.3 Topological Sort
 
@@ -191,3 +195,6 @@ void Topsort( Graph G )
 $$
 T=O(|V|+|E|)
 $$
+
+---
+

@@ -261,3 +261,6 @@ struct QueueRecord {
 <img src="picture/3-3.png" alt="3-3" style="zoom: 64%;" /><img src="picture/3-4.png" alt="3-4" style="zoom: 64%;" />
 
 - The maximum capacity of this queue is 5.![3-5](picture/3-5.png)
+
+---
+

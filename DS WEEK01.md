@@ -1,17 +1,5 @@
 # WEEK 1
 
-jkzhu@zju.edu.cn  朱建科
-
-11921102@zju.edu.cn  林利翔
-
-zijinxuxu@zju.edu.cn  任金伟
-
-冬学期第一周/第二周 Mid-Term (15)
-
-***
-
-
-
 ## 1 Algorithm Analysis
 
 #### [Definition] An *algorithm* is a finite set of instructions that, if followed, accomplishes a particular task. In addition, all algorithms must satisfy the following criteria.
@@ -116,7 +104,7 @@ But it takes more time to compute each step.
 
 ***
 
-## 1.2 Asymptotic Notation($O,\Omega,\Theta,o$) 
+### 1.2 Asymptotic Notation($O,\Omega,\Theta,o$) 
 
 * predict the growth ; compare the time complexities of two programs ; asymptotic(渐进的) behavior
 

@@ -121,7 +121,7 @@ PriorityQueue Initialize( int MaxElements )
 1. Insertion
 
    ```c
-   /* H->Element[ 0 ] is a sentinel that is no larger than the minimum element in the heap.*/ 
+   /*H->Element[ 0 ] is a sentinel that is no larger than the minimum element in the heap.*/ 
    void Insert( ElementType X, PriorityQueue H ) 
    { 
    	int i; 
@@ -245,3 +245,6 @@ ElementType FindKthSmallest ( int A[], int N, int K )
 > - When the priority queue is too large to fit entirely in main memory, a d-heap will become interesting.
 
 <img src="picture/6-2.png" alt="6-2"  />
+
+---
+

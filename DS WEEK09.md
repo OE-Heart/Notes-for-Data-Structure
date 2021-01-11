@@ -105,7 +105,7 @@ struct TableEntry
 	DistType Dist;
 	Vertex Path;
 };
-/* Vertices are numbered from O * /
+/*Vertices are numbered from 0* /
 #define NotAVertex (-1)
 typedef struct TableEntry Table[ NumVertex ];
 ```
@@ -114,7 +114,7 @@ typedef struct TableEntry Table[ NumVertex ];
 void InitTable(Vertex Start, Graph G, Table T)
 { 
 	int i;
-	ReadGraph(G, T) ; /* Read graph somehow */
+	ReadGraph(G, T); /* Read graph somehow */
 	for(i = 0; i < NumVertex; i++)
 	{
 		T[ i ].Known = False;
@@ -127,7 +127,7 @@ void InitTable(Vertex Start, Graph G, Table T)
 
 ```c
 /*Print shortest path to V after Dijkstra has run*/
-/* Assume that the path exists*/
+/*Assume that the path exists*/
 void PrintPath(Vertex V, Table T)
 {
 	if (T[ V ].Path != NotAVertex)
@@ -165,10 +165,31 @@ void Dijkstra( Table T )
 ##### Graphs with Negative Edge Costs
 
 ```c
-void WeightedNEgstive( Table T )
+void  WeightedNegative( Table T )
+{   /*T is initialized by Figure 9.30 on p.303*/
+    Queue Q;
+    Vertex V, W;
+    Q = CreateQueue (NumVertex );  MakeEmpty( Q );
+    Enqueue( S, Q ); /*Enqueue the source vertex*/
+    while ( !IsEmpty( Q ) ) 
+    {
+        V = Dequeue( Q );
+        for ( each W adjacent to V )
+		if ( T[ V ].Dist + Cvw < T[ W ].Dist ) 
+        {
+	    	T[ W ].Dist = T[ V ].Dist + Cvw;
+	    	T[ W ].Path = V;
+	    	if ( W is not already in Q )
+	        	Enqueue( W, Q );
+		} /*end-if update*/
+    } /*end-while */
+    DisposeQueue( Q ); /*free memory*/
+}/* negative-cost cycle will cause indefinite loop*/
 ```
 
-
+$$
+T=O(|V|\times|E|)
+$$
 
 ##### Acyclic Graphs
 
@@ -176,6 +197,13 @@ void WeightedNEgstive( Table T )
 
 #### All-Pairs Shortest Path Problem
 
+- For all pairs of $v_i$ and $v_j$ ( $i\neq j$ ), find the shortest path between.
+
 ##### Method 1 
 
+- Use **single-source algorithm** for $|V|$ times.
+- $T=O(|V|^3)$, works fast on sparse graph.
+
 ##### Method 2
+
+- $O(|V|^3)$ algorithm given in Chapter 10, works faster on dense graphs.

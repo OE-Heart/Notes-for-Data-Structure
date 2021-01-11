@@ -63,7 +63,9 @@
 >- If every $v \notin \{ s, t \}$ has either a single incoming edge of capacity 1 or a single outgoing edge of capacity 1, then time bound is reduced to $O( |E| |V|^{1/2} )$.
 >- The **min-cost flow** problem is to find, among all maximum flows, the one flow of minimum cost provided that each edge has a cost per unit of flow.
 
-### 6.5 Minimum Spanning Tree
+---
+
+### 6.6 Minimum Spanning Tree
 
 ##### [Definition] A *spanning tree* of a graph $G$ is a tree which consists of $V(G)$ and a subset of $E(G)$
 
@@ -85,10 +87,9 @@ Make the best decision for each stage, under the following constrains :
 
 1. Prim’s Algorithm
 
-   - 在算法的任一时刻，我们都可以看到一个已经添加到树上的顶点集，而其余顶点尚未加
-     到这棵树中
+   - 在算法的任一时刻，都可以看到一个已经添加到树上的顶点集，而其余顶点尚未加到这棵树中
    - 算法在每一阶段都可以通过选择边$(u, v)$，使得$(u,v)$的值是所有$u$ 在树上但$v$不在树上的边的值中的最小者，而找出一个新的顶点并把它添加到这棵树中
-
+   
 2. Kruskal’s Algorithm
 
    - 连续地按照最小的权选择边,，并且当所选的边不产生环时就把它作为取定的边

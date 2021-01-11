@@ -35,10 +35,14 @@
 - A **collision** occurs when we hash two nonidentical identifiers into the same bucket.
 - An **overflow** occurs when we hash a new identifier into a full bucket.
 
+---
+
 ### 8.2 Hash Function
 
 -  $f(x)$ must be **easy** to compute and **minimize** the number of **collisions**.
 -  $f(x)$ should be unbiased. For any $x$ and any $i$, we have that $Probability(f(x)=i)=\frac{1}{b}$. Such kind of a hash function is called a **uniform hash function**.
+
+---
 
 ### 8.3 Separate Chaining
 
@@ -130,6 +134,8 @@ void Insert ( ElementType Key, HashTable H )
 ```
 
 > Note : Make the TableSize about as large as the number of keys expected (i.e. to make the loading density factor $\lambda\approx$1).
+
+---
 
 ### 8.4 Open Addressing
 

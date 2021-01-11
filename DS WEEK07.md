@@ -214,11 +214,11 @@ SetType Find( ElementType X, DisjSet S )
 
   $\log^*N$ (inverse Ackermann function) = number of times the logarithm is applied to $N$ until the result $\leq1$.
 
+---
 
+### 5.7 Conclusion
 
-
-
-p.s. 一共有五种算法，注意看清题设
+一共有五种算法，注意看清题设
 
 - No smart union
 
@@ -229,3 +229,6 @@ p.s. 一共有五种算法，注意看清题设
 - Union-by-size + Path Compression
 
 - Union-by-height + Path Compression
+
+---
+
