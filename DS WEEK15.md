@@ -23,7 +23,7 @@ HashTable InitializeTable(int TableSize)
 	/*Allocate table*/
 	H = malloc(sizeof(struct HashTbl));
 	if(H == NULL)
-		Fatal Error("Out of space'!!");
+		Fatal Error("Out of space!!!");
 	H->TableSize = NextPrime(TableSize);
 	
     /*Allocate array of Cells*/

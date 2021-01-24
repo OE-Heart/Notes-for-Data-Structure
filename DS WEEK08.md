@@ -8,7 +8,7 @@
 
 #### Undirected graph 
 
-- $( v_i , v_j ) = ( v_j , v_i )$ = the same edge.，，，，，，，，，，，
+- $( v_i , v_j ) = ( v_j , v_i )$ = the same edge.
 
 #### Directed graph(diagraph)
 
@@ -23,11 +23,13 @@
 
 - A graph that has the maximum number of edges.
 
-<img src="picture/8-2.png" alt="8-2" style="zoom: 80%;" />
+![image-20210124163038265](picture/image-20210124163038265.png)
 
 #### Adjacent
 
-![8-3](picture/8-3.png)
+<img src="picture/image-20210124163324744.png" alt="image-20210124163324744" style="zoom:120%;" />
+
+<img src="picture/image-20210124163301833.png" alt="image-20210124163301833" style="zoom:120%;" />
 
 #### Subgraph
 
@@ -70,7 +72,7 @@ $$
 
 #### Strongly connected directed graph G
 
-- for every pair of $v_i$ and $v_j$ in $V( G )$, there exist directed paths from $v_i$ to $v_j$ and from $v_j$ to $v_i$.  
+- For every pair of $v_i$ and $v_j$ in $V( G )$, there exist directed paths from $v_i$ to $v_j$ and from $v_j$ to $v_i$.  
 - If the graph is connected without direction to the edges, then it is said to be weakly connected
 
 #### Strongly connected component
@@ -95,26 +97,33 @@ $$
 
 #### Adjacency Matrix
 
-<img src="picture/8-4.png" alt="8-4" style="zoom:60%;" />
+![image-20210124163641976](picture/image-20210124163641976.png)
 
-- Note : If G is undirected, then adj_mat[]\[] is symmetric. Thus we can save space by storing only half of the matrix.
+> Note : If G is undirected, then adj_mat[]\[] is symmetric. Thus we can save space by storing only half of the matrix.
+
+<img src="picture/image-20210123194735917.png" alt="image-20210123194735917"  />
+
 - This representation wastes space if the graph has a lot of vertices but very few edges.
-
-<img src="picture/8-5.png" alt="8-5" style="zoom:80%;" />
 
 - To find out whether or not $G$ is connected, we’ll have to examine all edges. In this case $T$ and $S$ are both $O( n^2 )$.
 
 #### Adjacency Lists
 
 - Replace each row by a linked list
-- Note : The order of nodes in each list does not matter.
+
+![image-20210124164723362](picture/image-20210124164723362.png)
+
+> Note : The order of nodes in each list does not matter.
+
 - For undirected $G$, $S$ = $n$ heads + $2e$ nodes  = $(n+2e)$ ptrs + $2e$ ints
 - Degree(i) = number of nodes in graph[i]\(if $G$ is undirected)
 - $T$ of examine $E(G)$ = $O(n+e)$
 
+![image-20210124165346405](picture/image-20210124165346405.png)
+
 #### Adjacency Multilists
 
-<img src="picture/8-6.png" alt="8-6" style="zoom:80%;" />
+![image-20210124164607434](picture/image-20210124164607434.png)
 
 - Sometimes we need to mark the edge after examine it, and then find the next edge.
 
@@ -130,6 +139,7 @@ $$
 #### AOV Network
 
 - digraph $G$ in which $V( G )$ represents activities and $E( G )$ represents precedence relations 
+- Feasible AOV network must be a directed acyclic graph.
 - $i$  is a **predecessor** of $j$ = there is a path from $i$  to $j$
 - $i$  is an **immediate predecessor** of  $j$ = $< i,  j > \in E( G )$. Then $j$ is called a **successor**(**immediate successor**) of $i$
 
@@ -137,11 +147,11 @@ $$
 
 - a precedence relation which is both **transitive** and **irreflexive** 
 
-- Note : If the precedence relation is reflexive, then there must be an $i$ such that $i$ is a predecessor of $i$.  That is, $i$ must be done before $i$ is started. Therefore if a project is **feasible**, it must be **irreflexive**.
+> Note : If the precedence relation is reflexive, then there must be an $i$ such that $i$ is a predecessor of $i$.  That is, $i$ must be done before $i$ is started. Therefore if a project is **feasible**, it must be **irreflexive**.
 
 #### [Definition] A *topological order* is a linear ordering  of the vertices of a graph such that, for any two vertices, $i$, $j$, if $i$ is a predecessor of $j$ in the network then $i$ precedes $j$ in the linear ordering.
 
-- Note : The topological orders may **not be unique** for a network.
+> Note : The topological orders may **not be unique** for a network.
 
 ```c
 /*Test an AOV for feasibility, and generate a topological order if possible*/
@@ -149,7 +159,7 @@ void Topsort( Graph G )
 {   
 	int Counter;
     Vertex V, W;
-    for ( Counter = 0; Counter < NumVertex; Counter ++ ) 
+    for ( Counter = 0; Counter < NumVertex; Counter++ ) 
     {
 		V = FindNewVertexOfDegreeZero( );
 		if ( V == NotAVertex ) 

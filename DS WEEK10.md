@@ -27,7 +27,8 @@
 
 - allow the algorithm to **undo** its decisions
 - For each edge $( v, w )$ with flow $f_{v, w}$ in $G_f$, add an edge $( w, v )$ with flow $f_{v, w}$ in $G_r$ .
-- Note : The algorithm works for $G$ with **cycles** as well.
+
+> Note : The algorithm works for $G$ with **cycles** as well.
 
 ##### [Proposition] If the edge capabilities are *rational numbers*, this algorithm always terminate with a maximum flow.
 
@@ -35,16 +36,17 @@
 
 - An augmenting path can be found by an unweighted shortest path algorithm.
 
-- $T=O(f*|E|)$ where $f$ is the maximum flow.
+- $T=O(f|E|)$ where $f$ is the maximum flow.
 
 - Always choose the augmenting path that allows the largest increase in flow
 
-  - 对Dijkstra算法进行单线(single-line)修改来寻找增长路径
+  - 对Dijkstra算法进行单线(single-line)修改来寻找增长通路
   - $cap_{max}$为最大边容量
+  - $O(|E|\log cap_{max})$条增长通路将足以找到最大流，对于增长通路的每次计算需要$O(|E|\log|V|)$时间
 
   $$
-  T=T_{augmentation}*T_{find\_a\_path}\\
-  =O(|E|\log cap_{max})*O(|E|\log|V|)\\
+  T=T_{augmentation}\times T_{find\_a\_path}\\
+  =O(|E|\log cap_{max})\times O(|E|\log|V|)\\
   =O(|E|^2\log|V|\log cap_{max})
   $$
 
@@ -53,8 +55,8 @@
   - 使用无权最短路算法来寻找增长路径
 
   $$
-  T=T_{augmentation}*T_{find\_a\_path}\\
-  =O(|E|)*O(|E||V|)\\
+  T=T_{augmentation}\times T_{find\_a\_path}\\
+  =O(|E||V|)\times O(|E|)\\
   =O(|E|^2|V|)
   $$
 
@@ -146,4 +148,4 @@ Make the best decision for each stage, under the following constrains :
      T=O(|E|\log|E|)
      $$
 
-     
+     ---
