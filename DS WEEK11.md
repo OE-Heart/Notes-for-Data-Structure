@@ -38,9 +38,9 @@ void ListComponents(Graph G)
 
 > Note : No edges can be shared by two or more biconnected components.  Hence $E(G)$ is partitioned by the biconnected components of $G$.
 
-Finding the biconnected components of a connected undirected $G$ :
+Finding the **biconnected components** of a connected undirected $G$ :
 
-> - Use depth first search to obtain a spanning tree of $G$
+> - Use **depth first search** to obtain a spanning tree of $G$
 >
 >   ![image-20201208110403641](picture/image-20201208110403641.png)
 >
@@ -48,7 +48,8 @@ Finding the biconnected components of a connected undirected $G$ :
 >
 >   - Depth first number($Num$) 先序编号
 >   - Back edges(背向边) = $(u,v)\notin$ tree and $u$ is an ancestor of $v$.
->   - Note : If $u$ is an ancestor of $v$, then $Num(u)<Num(v)$.
+>
+>   > Note : If $u$ is an ancestor of $v$, then $Num(u)<Num(v)$.
 >
 > - Find the articulation points in $G$
 >   - The root is an articulation point if it has at least 2 children.
@@ -149,6 +150,8 @@ void X_Sort (ElementType A[], int N)
 - ‘>’ and ‘<’ operators exist and are the only operations allowed on the input data.
 - Consider internal sorting only. The entire sort can be done in main memory.
 
+---
+
 ### 7.2 Insertion Sort
 
 ```c
@@ -177,6 +180,8 @@ void Insertion(ElementType A[], int N)
   $$
   T(N)=O(N)
   $$
+
+---
 
 ### 7.3 A Lower Bound for Simple Sorting Algorithms
 
