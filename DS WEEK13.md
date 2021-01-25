@@ -255,6 +255,10 @@ void Qselect(ElementType A[ ], int k, int Left, int Right)
 }
 ```
 
+![image-20210125115951471](picture/image-20210125115951471.png)
+
+正确答案是D
+
 ---
 
 ### 7.8 Sorting Large Structures
@@ -277,7 +281,7 @@ void Qselect(ElementType A[ ], int k, int Left, int Right)
 
 ---
 
-### 7.10 Bucket Sort and Radix Sort
+### 7.10 Bucket Sort
 
 ![image-20201221203533117](picture/image-20201221203533117.png)
 
@@ -307,5 +311,18 @@ $$
 ![image-20201221203950519](picture/image-20201221203950519.png)
 
 - $T=O(P(N+B))$ where $P$ is the number of passes, $N$ is the number of elements to sort, and $B$ is the number of buckets.
+
+#### MSD(Most Significant Digit) Sort and LSD(Least Significant Digit) Sort
+
+<img src="picture/image-20210102211456822.png" alt="image-20210102211456822" style="zoom: 75%;" />
+
+<img src="picture/image-20210102211604977.png" alt="image-20210102211604977" style="zoom: 75%;" />
+
+<img src="picture/image-20210102211647809.png" alt="image-20210102211647809" style="zoom:75%;" />
+
+---
+
+- 稳定的排序算法：冒泡排序、插入排序、归并排序、基数排序
+- 不稳定的排序算法：选择排序、快速排序、希尔排序、堆排序
 
 ---

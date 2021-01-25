@@ -1,17 +1,5 @@
 # WEEK 14
 
-### 7.12 MSD(Most Significant Digit) Sort and LSD(Least Significant Digit) Sort
-
-<img src="picture/image-20210102211456822.png" alt="image-20210102211456822" style="zoom: 75%;" />
-
-<img src="picture/image-20210102211604977.png" alt="image-20210102211604977" style="zoom: 75%;" />
-
-<img src="picture/image-20210102211647809.png" alt="image-20210102211647809" style="zoom:75%;" />
-
----
-
-
-
 ## 8 Hashing
 
 ### 8.1 General Idea

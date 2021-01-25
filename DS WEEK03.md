@@ -228,6 +228,8 @@ struct StackRecord {
 4. Function Calls (System Stack)
 
     <img src="picture/3-2.png" alt="3-2" style="zoom:80%;" />
+    
+    > Note : Recursion can always be **completely removed**. Non recursive programs are generally **faster** than equivalent recursive programs. However, recursive programs are in general much **simpler and easier to understand**.
 
 ***
 
@@ -260,7 +262,9 @@ struct QueueRecord {
 
 <img src="picture/3-3.png" alt="3-3" style="zoom: 64%;" /><img src="picture/3-4.png" alt="3-4" style="zoom: 64%;" />
 
-- The maximum capacity of this queue is 5.![3-5](picture/3-5.png)
+- The maximum capacity of this queue is 5.
+
+> Note : Adding a **Size** field can avoid wasting one empty space to distinguish “full” from “empty”.  
 
 ---
 

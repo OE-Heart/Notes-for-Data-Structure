@@ -148,4 +148,7 @@ Make the best decision for each stage, under the following constrains :
      T=O(|E|\log|E|)
      $$
 
+     ![image-20210124214008496](picture/image-20210124214008496.png)
+     
      ---
+

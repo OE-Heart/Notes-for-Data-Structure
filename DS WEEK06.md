@@ -196,6 +196,8 @@ $$
    $$
 
    **[Theorem]** For the perfect binary tree of height $h$ containing $2^{h+1}-1$ nodes, the sum of the heights of the nodes is $2^{h+1}-1-(h+1)$.
+   
+   ![image-20210125151728720](picture/image-20210125151728720.png)
 
 ---
 
@@ -245,6 +247,10 @@ ElementType FindKthSmallest ( int A[], int N, int K )
 > - When the priority queue is too large to fit entirely in main memory, a d-heap will become interesting.
 
 <img src="picture/6-2.png" alt="6-2"  />
+
+![image-20210125070700824](picture/image-20210125070700824.png)
+
+正确答案是4，注意“in the process”
 
 ---
 
