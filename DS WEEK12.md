@@ -31,7 +31,7 @@ void Shellsort( ElementType A[ ], int N )
                 	A[ j ] = A[ j-Increment ]; 
         		else 
 		    		break; 
-			A[ j ] = Tmp; m
+			A[ j ] = Tmp;
 		} /* end for-I and for-Increment loops */
 }
 ```
@@ -52,7 +52,7 @@ $$
 - Sedgewick’s best sequence is $\{1, 5, 19, 41, 109, \cdots \}$ in which the terms are either of the form $9\times4^i – 9\times2^i + 1$ or 
   $4^i – 3\times2^i + 1$.  $T_{avg} ( N ) = O ( N^{7/6} )$ and $T_{worst}( N ) = O( N^{4/3} )$.
 
-#### Conclusion
+#### Conclusion 
 
 - Shellsort is a very simple algorithm, yet with an extremely complex analysis.  
 - It is good for sorting up to moderately large input (tens of thousands).
@@ -109,7 +109,7 @@ void MSort( ElementType A[ ], ElementType TmpArray[ ], int Left, int Right )
 {   
     int Center; 
     if ( Left < Right ) 
-    {  /*if there are elements to be sorte*/
+    {  /*if there are elements to be sort*/
 		Center = (Left+Right)/2; 
 		MSort(A, TmpArray, Left, Center); 	/*T(N/2)*/
 		MSort(A, TmpArray, Center+1, Right); 	/*T(N/2)*/

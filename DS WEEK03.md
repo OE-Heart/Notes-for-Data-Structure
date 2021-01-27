@@ -106,10 +106,10 @@ struct StackRecord {
 - Error check must be done before Push or Pop (Top).
 
   ```c
-  Stack CreateStack(int Max Elements)
+  Stack CreateStack(int MaxElements)
   {
   	Stack S;
-  	if(MaxEl ements < MinStackSize)
+  	if(MaxElements < MinStackSize)
   	Error("Stack size is too small") ;
   	S = malloc(sizeof(struct StackRecord));
   	if (S == NULL)
@@ -118,7 +118,7 @@ struct StackRecord {
   	S->Array = malloc(sizeof(ElementType) * MaxElements) ;
   	if(S->Array = NULL)
   		Fatal Error("Out of space!!!");
-  	S->Capacity = Max Elements;
+  	S->Capacity = MaxElements;
   	MakeEmpty(S) ;
   	return S;
   }
